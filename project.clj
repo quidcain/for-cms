@@ -7,7 +7,15 @@
                  [ring/ring-core "1.7.1"]
                  [ring/ring-jetty-adapter "1.7.1"]
                  [ring/ring-devel "1.7.1"]
-                 [ring/ring-json "0.4.0"]]
+                 [ring/ring-json "0.4.0"]
+                 [org.clojure/clojurescript "1.10.520"]]
+  :plugins [[lein-cljsbuild "1.1.7"]]
   :main ^:skip-aot total-recall.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}}
+  :cljsbuild {
+    :builds [{
+        :source-paths ["src"]
+        :compiler {
+          :optimizations :advanced
+          :pretty-print false}}]})
